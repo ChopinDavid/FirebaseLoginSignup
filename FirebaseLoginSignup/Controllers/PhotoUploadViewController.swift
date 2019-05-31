@@ -1,6 +1,6 @@
 //
 //  PhotoUploadViewController.swift
-//  Homescape
+//  FirebaseLoginSignup
 //
 //  Created by David G Chopin on 5/29/19.
 //  Copyright © 2019 David G Chopin. All rights reserved.
@@ -22,7 +22,7 @@ class PhotoUploadViewController: UIViewController {
     @IBOutlet var signupButton: UIButton!
     @IBOutlet var containingViewVerticalConstraint: NSLayoutConstraint!
     
-    var homescapeUser: User!
+    var FirebaseLoginSignupUser: User!
     
     //Create our image picker
     var imagePicker = UIImagePickerController()
@@ -60,8 +60,9 @@ class PhotoUploadViewController: UIViewController {
         pencilImageView.layer.cornerRadius = pencilImageView.frame.height / 2
     }
     @IBAction func profilePicButtonPressed(_ sender: Any) {
-        let alertController = PMAlertController(title: "Import from camera roll or take a picture?", description: "", image: UIImage(named: "camera"), style: .alert)
-        
+        let camera = UIImage(named: "camera")!.image(withTintColor: UIColor.secondaryColor)
+        let alertController = PMAlertController(title: "Import from camera roll or take a picture?", description: "", image: camera, style: .alert)
+        alertController.alertTitle.textColor = UIColor.darkText
         let importPic = PMAlertAction(title: "Import", style: .default) {
             if UIImagePickerController.isSourceTypeAvailable(.savedPhotosAlbum) {
                 self.imagePicker.sourceType = .savedPhotosAlbum
@@ -70,6 +71,7 @@ class PhotoUploadViewController: UIViewController {
                 self.present(self.imagePicker, animated: true, completion: nil)
             }
         }
+        importPic.setTitleColor(UIColor.secondaryColor, for: .normal)
         alertController.addAction(importPic)
         
         let newPic = PMAlertAction(title: "New Picture", style: .default) {
@@ -80,6 +82,7 @@ class PhotoUploadViewController: UIViewController {
                 self.present(self.imagePicker, animated: true, completion: nil)
             }
         }
+        newPic.setTitleColor(UIColor.secondaryColor, for: .normal)
         alertController.addAction(newPic)
         
         present(alertController, animated: true, completion: nil)
@@ -116,7 +119,7 @@ class PhotoUploadViewController: UIViewController {
         view.isUserInteractionEnabled = false
         
         //...and create a firebase user with those credentials
-        Auth.auth().createUser(withEmail: homescapeUser.email, password: homescapeUser.password!) { (user, error) in
+        Auth.auth().createUser(withEmail: FirebaseLoginSignupUser.email, password: FirebaseLoginSignupUser.password!) { (user, error) in
             if error == nil {
                 
                 if let firebaseUser = Auth.auth().currentUser {
@@ -124,12 +127,12 @@ class PhotoUploadViewController: UIViewController {
                     if self.photoChanged {
                         
                         //If the user selected a personal profile picture, then we need to upload it to our database
-                        self.uploadImage(image: self.profilePicButton.imageView!.image!, userid: firebaseUser.uid, completion: { urlString in Database.database().reference().child("Users").child(firebaseUser.uid).updateChildValues(["email" : self.homescapeUser.email,"photoUrl" : urlString,"name": self.homescapeUser.name])
+                        self.uploadImage(image: self.profilePicButton.imageView!.image!, userid: firebaseUser.uid, completion: { urlString in Database.database().reference().child("Users").child(firebaseUser.uid).updateChildValues(["email" : self.FirebaseLoginSignupUser.email,"photoUrl" : urlString,"name": self.FirebaseLoginSignupUser.name])
                             
                             
                             //Set the user's photoURL as the url of the photo we just uplaoded
                             changeRequest.photoURL = URL(string: urlString)
-                            changeRequest.displayName = self.homescapeUser.name
+                            changeRequest.displayName = self.FirebaseLoginSignupUser.name
                             
                             //Commit these changes
                             changeRequest.commitChanges { error in
@@ -152,9 +155,9 @@ class PhotoUploadViewController: UIViewController {
                             }
                         })
                     } else {
-                        Database.database().reference().child("Users").child(firebaseUser.uid).updateChildValues(["email" : self.homescapeUser.email,"photoUrl" : "nil","name": self.homescapeUser.name])
+                        Database.database().reference().child("Users").child(firebaseUser.uid).updateChildValues(["email" : self.FirebaseLoginSignupUser.email,"photoUrl" : "nil","name": self.FirebaseLoginSignupUser.name])
                         changeRequest.photoURL = URL(string: "nil")
-                        changeRequest.displayName = self.homescapeUser.name
+                        changeRequest.displayName = self.FirebaseLoginSignupUser.name
                         changeRequest.commitChanges { error in
                             if let error = error {
                                 // An error happened.

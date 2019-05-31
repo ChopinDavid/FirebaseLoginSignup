@@ -1,15 +1,15 @@
 //
-//  HomescapeTests.swift
-//  HomescapeTests
+//  FirebaseLoginSignupTests.swift
+//  FirebaseLoginSignupTests
 //
 //  Created by David G Chopin on 5/27/19.
 //  Copyright © 2019 David G Chopin. All rights reserved.
 //
 
 import XCTest
-@testable import Homescape
+@testable import FirebaseLoginSignup
 
-class HomescapeTests: XCTestCase {
+class FirebaseLoginSignupTests: XCTestCase {
 
     override func setUp() {
         // Put setup code here. This method is called before the invocation of each test method in the class.

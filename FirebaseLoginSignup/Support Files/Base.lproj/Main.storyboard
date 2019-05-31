@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="Dk7-Yc-ZzQ">
-                                <rect key="frame" x="87" y="384" width="240.00000000000045" height="128"/>
+                                <rect key="frame" x="87" y="384" width="240" height="128"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="128" id="5Ab-Ok-zax"/>
                                     <constraint firstAttribute="width" constant="240" id="7Gd-5S-sGg"/>
@@ -110,14 +110,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xT6-w6-r6O" customClass="MDCActivityIndicator">
-                                <rect key="frame" x="192" y="433" width="30" height="30"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="30" id="dnR-pf-8xf"/>
-                                    <constraint firstAttribute="height" constant="30" id="wSV-Cf-148"/>
-                                </constraints>
-                            </view>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="2wb-9d-H6Z">
                                 <rect key="frame" x="107" y="272" width="200" height="352"/>
                                 <subviews>
@@ -199,18 +191,26 @@
                                     <constraint firstAttribute="width" constant="200" id="TlO-db-eSf"/>
                                 </constraints>
                             </stackView>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="V5O-9b-sbi" customClass="MDCActivityIndicator">
+                                <rect key="frame" x="192" y="433" width="30" height="30"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="30" id="rJN-AV-F0f"/>
+                                    <constraint firstAttribute="height" constant="30" id="z7e-7p-OE1"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="V5O-9b-sbi" firstAttribute="centerX" secondItem="fXI-v6-kt0" secondAttribute="centerX" id="Dst-mf-rLO"/>
                             <constraint firstItem="2wb-9d-H6Z" firstAttribute="centerY" secondItem="fXI-v6-kt0" secondAttribute="centerY" id="FgP-2q-dCq"/>
-                            <constraint firstItem="xT6-w6-r6O" firstAttribute="centerY" secondItem="fXI-v6-kt0" secondAttribute="centerY" id="Hrt-ix-Arq"/>
-                            <constraint firstItem="xT6-w6-r6O" firstAttribute="centerX" secondItem="fXI-v6-kt0" secondAttribute="centerX" id="PYv-st-zCZ"/>
                             <constraint firstItem="2wb-9d-H6Z" firstAttribute="centerX" secondItem="fXI-v6-kt0" secondAttribute="centerX" id="kkG-N8-mo1"/>
+                            <constraint firstItem="V5O-9b-sbi" firstAttribute="centerY" secondItem="fXI-v6-kt0" secondAttribute="centerY" id="l9j-Qk-Fxv"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="z8X-Ev-uFk"/>
                     </view>
                     <connections>
-                        <outlet property="activityIndicator" destination="xT6-w6-r6O" id="yXY-9Z-NC1"/>
+                        <outlet property="activityIndicator" destination="V5O-9b-sbi" id="Jgp-gk-a9j"/>
                         <outlet property="emailTextField" destination="l1X-Ep-dg1" id="dob-eH-S43"/>
                         <outlet property="facebookButton" destination="qhd-dC-gIF" id="eOG-t9-ONr"/>
                         <outlet property="nameTextField" destination="Ng7-d1-dVm" id="Kjv-zm-XYU"/>
@@ -219,6 +219,7 @@
                         <outlet property="passwordTextField" destination="qaO-pE-F1L" id="DVU-B5-x9P"/>
                         <outlet property="stackView" destination="2wb-9d-H6Z" id="Fw9-VA-y0C"/>
                         <outlet property="stackViewVerticalConstraint" destination="FgP-2q-dCq" id="PEH-a9-QVv"/>
+                        <segue destination="9vn-AT-O5d" kind="showDetail" identifier="signupToHome" id="2ox-7z-MGR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OBA-sx-o5r" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -436,7 +437,7 @@
                                             <action selector="loginButtonPressed:" destination="09t-f2-fuC" eventType="touchUpInside" id="4yw-LY-Pug"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WQk-Zj-ibd">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WQk-Zj-ibd">
                                         <rect key="frame" x="0.0" y="171" width="108" height="28"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                         <state key="normal" title="Forgot password?"/>
@@ -579,6 +580,6 @@
         <image name="profile" width="512" height="512"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="U5D-Ii-IWG"/>
+        <segue reference="2ox-7z-MGR"/>
     </inferredMetricsTieBreakers>
 </document>

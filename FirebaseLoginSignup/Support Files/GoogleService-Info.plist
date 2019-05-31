@@ -3,21 +3,21 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>748042917476-mdb787o066cthcvhs2g7rg6sd32hsqji.apps.googleusercontent.com</string>
+	<string>499749354243-encsbgp8k03obobpvf1egme1rvje8j1u.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.748042917476-mdb787o066cthcvhs2g7rg6sd32hsqji</string>
+	<string>com.googleusercontent.apps.499749354243-encsbgp8k03obobpvf1egme1rvje8j1u</string>
 	<key>API_KEY</key>
-	<string>AIzaSyBnsWBpZhXASjSfyKS3ZlhUloqUVERJXYU</string>
+	<string>AIzaSyBt4pNguOMWE-3nci2M86AvhW-ofhM1ByI</string>
 	<key>GCM_SENDER_ID</key>
-	<string>748042917476</string>
+	<string>499749354243</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
 	<string>com.allcapssoftware.FirebaseLoginSignup</string>
 	<key>PROJECT_ID</key>
-	<string>test-project-6ca58</string>
+	<string>new-project-f4ac4</string>
 	<key>STORAGE_BUCKET</key>
-	<string>test-project-6ca58.appspot.com</string>
+	<string>new-project-f4ac4.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -29,8 +29,8 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:748042917476:ios:65a3745f5649d0da</string>
+	<string>1:499749354243:ios:65a3745f5649d0da</string>
 	<key>DATABASE_URL</key>
-	<string>https://test-project-6ca58.firebaseio.com</string>
+	<string>https://new-project-f4ac4.firebaseio.com</string>
 </dict>
 </plist>

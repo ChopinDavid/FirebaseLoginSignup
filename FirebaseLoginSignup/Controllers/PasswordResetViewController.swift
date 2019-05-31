@@ -1,6 +1,6 @@
 //
 //  PasswordResetViewController.swift
-//  Homescape
+//  FirebaseLoginSignup
 //
 //  Created by David G Chopin on 5/31/19.
 //  Copyright © 2019 David G Chopin. All rights reserved.
@@ -46,7 +46,7 @@ class PasswordResetViewController: UIViewController {
             self.view.layoutIfNeeded()
             
             UIView.animate(withDuration: 0.25) {
-                self.heightFromBottomConstraint.constant = rect.height - 75
+                self.heightFromBottomConstraint.constant = rect.height - 60
                 self.view.layoutIfNeeded()
             }
         }
@@ -77,7 +77,9 @@ class PasswordResetViewController: UIViewController {
         //Check that the user doesn't have an empty email field
         if emailTextField.text!.count == 0 {
             let alertController = PMAlertController(title: "Error", description: "Enter an email to reset your password.", image: nil, style: .alert)
+            alertController.alertTitle.textColor = UIColor.darkText
             let ok = PMAlertAction(title: "OK", style: .cancel, action: nil)
+            ok.setTitleColor(UIColor.secondaryColor, for: .normal)
             alertController.addAction(ok)
             self.present(alertController, animated: true, completion: nil)
             return
@@ -93,10 +95,12 @@ class PasswordResetViewController: UIViewController {
             
             //Check if we got results back from the submitted email
             guard let _ = results, results != nil else {
-                let alertController = PMAlertController(title: "Error", description: "We couldn't find a Homescape account associated with that email.", image: nil, style: .alert)
+                let alertController = PMAlertController(title: "Error", description: "We couldn't find a FirebaseLoginSignup account associated with that email.", image: nil, style: .alert)
+                alertController.alertTitle.textColor = UIColor.darkText
                 let ok = PMAlertAction(title: "OK", style: .cancel, action: {
                     self.navigationController!.popToRootViewController(animated: true)
                 })
+                ok.setTitleColor(UIColor.secondaryColor, for: .normal)
                 alertController.addAction(ok)
                 self.present(alertController, animated: true, completion: nil)
                 return
@@ -106,25 +110,29 @@ class PasswordResetViewController: UIViewController {
             if results!.first == "password" {
                 Auth.auth().sendPasswordReset(withEmail: self.emailTextField.text!) { error in
                     if error == nil {
-                        let alertController = PMAlertController(title: "Password Reset Sent", description: "Check your email to reset your Homescape password.", image: nil, style: .alert)
+                        let alertController = PMAlertController(title: "Password Reset Sent", description: "Check your email to reset your FirebaseLoginSignup password.", image: nil, style: .alert)
+                        alertController.alertTitle.textColor = UIColor.darkText
                         let ok = PMAlertAction(title: "OK", style: .cancel, action: {
                             self.navigationController!.popToRootViewController(animated: true)
                         })
+                        ok.setTitleColor(UIColor.secondaryColor, for: .normal)
                         alertController.addAction(ok)
                         self.present(alertController, animated: true, completion: nil)
                         
                     } else {
                         let alertController = PMAlertController(title: "Error occured", description: error?.localizedDescription ?? "", image: nil, style: .alert)
+                        alertController.alertTitle.textColor = UIColor.darkText
                         let ok = PMAlertAction(title: "OK", style: .cancel, action: nil)
-                        
+                        ok.setTitleColor(UIColor.secondaryColor, for: .normal)
                         alertController.addAction(ok)
                         self.present(alertController, animated: true, completion: nil)
                     }
                 }
             } else {
                 let alertController = PMAlertController(title: "Error", description: "Only accounts that aren't linked with Facebook can reset their passwords.", image: nil, style: .alert)
+                alertController.alertTitle.textColor = UIColor.darkText
                 let ok = PMAlertAction(title: "OK", style: .cancel, action: nil)
-                
+                ok.setTitleColor(UIColor.secondaryColor, for: .normal)
                 alertController.addAction(ok)
                 self.present(alertController, animated: true, completion: nil)
             }

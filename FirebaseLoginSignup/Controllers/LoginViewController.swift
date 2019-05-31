@@ -1,6 +1,6 @@
 //
 //  LoginViewController.swift
-//  Homescape
+//  FirebaseLoginSignup
 //
 //  Created by David G Chopin on 5/29/19.
 //  Copyright © 2019 David G Chopin. All rights reserved.
@@ -108,7 +108,9 @@ class LoginViewController: UIViewController {
             } else {
                 //Otherwise tell the user they have an incorrect username or password
                 let alertController = PMAlertController(title: "Incorrect username or password", description: "", image: nil, style: .alert)
+                alertController.alertTitle.textColor = UIColor.darkText
                 let ok = PMAlertAction(title: "OK", style: .cancel)
+                ok.setTitleColor(UIColor.secondaryColor, for: .normal)
                 alertController.addAction(ok)
                 self.present(alertController, animated: true, completion: nil)
                 
@@ -165,8 +167,10 @@ extension LoginViewController: FBSDKLoginButtonDelegate {
                     } else if let providers = providers {
                         //If providers are returned, and they aren't facebook related, this means that there is already an account associated with this email
                         if providers.first != "facebook.com" {
-                            let alertController = PMAlertController(title: "Email already in use.", description: "The email address linked with this Facebook account is already being used by a Homescape user.", image: nil, style: .alert)
+                            let alertController = PMAlertController(title: "Email already in use.", description: "The email address linked with this Facebook account is already being used by an existing user.", image: nil, style: .alert)
+                            alertController.alertTitle.textColor = UIColor.darkText
                             let ok = PMAlertAction(title: "Ok", style: .cancel, action: nil)
+                            ok.setTitleColor(UIColor.secondaryColor, for: .normal)
                             alertController.addAction(ok)
                             self.present(alertController, animated: true, completion: nil)
                             

@@ -1,6 +1,6 @@
 //
 //  SignupViewController.swift
-//  Homescape
+//  FirebaseLoginSignup
 //
 //  Created by David G Chopin on 5/29/19.
 //  Copyright © 2019 David G Chopin. All rights reserved.
@@ -34,6 +34,10 @@ class SignupViewController: UIViewController {
         
         //Set navigation item title
         self.navigationItem.title = "Signup"
+        
+        //Setup the activity indicator
+        activityIndicator.layer.cornerRadius = activityIndicator.frame.width/2
+        activityIndicator.cycleColors = [UIColor.secondaryColor]
         
         //Set the facebookButton's delegate
         facebookButton.delegate = self
@@ -101,7 +105,9 @@ class SignupViewController: UIViewController {
         if emailTextField.text!.count > 0, passwordTextField.text!.count > 0, passwordConfirmTextField.text!.count > 0, nameTextField.text!.count > 0 {
             if passwordTextField.text != passwordConfirmTextField.text {
                 let alertController = PMAlertController(title: "Error", description: "Make sure your password confirmation matches", image: nil, style: .alert)
+                alertController.alertTitle.textColor = UIColor.darkText
                 let ok = PMAlertAction(title: "OK", style: .cancel)
+                ok.setTitleColor(UIColor.secondaryColor, for: .normal)
                 alertController.addAction(ok)
                 present(alertController, animated: true, completion: nil)
             } else {
@@ -111,14 +117,16 @@ class SignupViewController: UIViewController {
                 
                 //Add user to photoUploadVC
                 let user = User(email: emailTextField.text!, name: nameTextField.text!, password: passwordTextField.text!)
-                photoUploadVC.homescapeUser = user
+                photoUploadVC.FirebaseLoginSignupUser = user
                 
                 //Push photoUploadVC
                 navigationController!.pushViewController(photoUploadVC, animated: true)
             }
         } else {
             let alertController = PMAlertController(title: "Error", description: "Make sure all fields are filled out", image: nil, style: .alert)
+            alertController.alertTitle.textColor = UIColor.darkText
             let ok = PMAlertAction(title: "OK", style: .cancel)
+            ok.setTitleColor(UIColor.secondaryColor, for: .normal)
             alertController.addAction(ok)
             present(alertController, animated: true, completion: nil)
         }
@@ -157,8 +165,10 @@ extension SignupViewController: FBSDKLoginButtonDelegate {
                     } else if let providers = providers {
                         //If providers are returned, and they aren't facebook related, this means that there is already an account associated with this email
                         if providers.first != "facebook.com" {
-                            let alertController = PMAlertController(title: "Email already in use.", description: "The email address linked with this Facebook account is already being used by a Homescape user.", image: nil, style: .alert)
+                            let alertController = PMAlertController(title: "Email already in use.", description: "The email address linked with this Facebook account is already being used by an existing user.", image: nil, style: .alert)
+                            alertController.alertTitle.textColor = UIColor.darkText
                             let ok = PMAlertAction(title: "Ok", style: .cancel, action: nil)
+                            ok.setTitleColor(UIColor.secondaryColor, for: .normal)
                             alertController.addAction(ok)
                             self.present(alertController, animated: true, completion: nil)
                             
@@ -172,7 +182,7 @@ extension SignupViewController: FBSDKLoginButtonDelegate {
                             Auth.auth().signInAndRetrieveData(with: credential, completion: { (result, error) in
                                 if error == nil {
                                     //Segue to the mapViewController if no error
-                                    self.performSegue(withIdentifier: "loginToHome", sender: self)
+                                    self.performSegue(withIdentifier: "signupToHome", sender: self)
                                     UIApplication.shared.registerForRemoteNotifications()
                                 } else {
                                     print("error:", error)

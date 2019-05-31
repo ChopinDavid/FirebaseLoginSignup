@@ -1,6 +1,6 @@
 //
 //  User.swift
-//  Homescape
+//  FirebaseLoginSignup
 //
 //  Created by David G Chopin on 5/29/19.
 //  Copyright © 2019 David G Chopin. All rights reserved.
