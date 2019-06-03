@@ -17,6 +17,6 @@ extension UIColor {
     
     //Our secondary color
     static var secondaryColor: UIColor {
-        return UIColor(red: 0.60, green: 0.32, blue: 0.71, alpha: 1)
+        return UIColor.orange
     }
 }

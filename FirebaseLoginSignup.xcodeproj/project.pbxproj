@@ -26,7 +26,6 @@
 		63C55511229F1357005F2906 /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C55510229F1357005F2906 /* UIImage.swift */; };
 		63C8482F22A1B1E6003A71F3 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C8482E22A1B1E6003A71F3 /* UIColor.swift */; };
 		63C8483122A1B29A003A71F3 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C8483022A1B29A003A71F3 /* HomeViewController.swift */; };
-		63C8483322A1C4A3003A71F3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 63C8483222A1C4A3003A71F3 /* GoogleService-Info.plist */; };
 		7811577F3964BC9E8E25EFE7 /* Pods_FirebaseLoginSignup.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CA2EDC8DBA4CD793B55D194 /* Pods_FirebaseLoginSignup.framework */; };
 		B0E24B23EB18668AE325D60E /* Pods_FirebaseLoginSignupUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C782D43337ACBB3D8D418486 /* Pods_FirebaseLoginSignupUITests.framework */; };
 /* End PBXBuildFile section */
@@ -77,7 +76,6 @@
 		63C55510229F1357005F2906 /* UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
 		63C8482E22A1B1E6003A71F3 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		63C8483022A1B29A003A71F3 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
-		63C8483222A1C4A3003A71F3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		8C8C5A338582DD3FC4B7DAD3 /* Pods-FirebaseLoginSignup.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FirebaseLoginSignup.debug.xcconfig"; path = "Target Support Files/Pods-FirebaseLoginSignup/Pods-FirebaseLoginSignup.debug.xcconfig"; sourceTree = "<group>"; };
 		AE75B547DBEEE1281FCFF0F5 /* Pods-FirebaseLoginSignup.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FirebaseLoginSignup.release.xcconfig"; path = "Target Support Files/Pods-FirebaseLoginSignup/Pods-FirebaseLoginSignup.release.xcconfig"; sourceTree = "<group>"; };
 		B1A204A34915448786C622BA /* Pods-FirebaseLoginSignupUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FirebaseLoginSignupUITests.release.xcconfig"; path = "Target Support Files/Pods-FirebaseLoginSignupUITests/Pods-FirebaseLoginSignupUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -195,7 +193,6 @@
 				63713486229C427000AC850A /* LaunchScreen.storyboard */,
 				63713484229C427000AC850A /* Assets.xcassets */,
 				63713489229C427000AC850A /* Info.plist */,
-				63C8483222A1C4A3003A71F3 /* GoogleService-Info.plist */,
 			);
 			path = "Support Files";
 			sourceTree = "<group>";
@@ -342,7 +339,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				63713488229C427000AC850A /* LaunchScreen.storyboard in Resources */,
-				63C8483322A1C4A3003A71F3 /* GoogleService-Info.plist in Resources */,
 				63713485229C427000AC850A /* Assets.xcassets in Resources */,
 				63713483229C426E00AC850A /* Main.storyboard in Resources */,
 			);
@@ -688,7 +684,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.allcapssoftware.FirebaseLoginSignup;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yourorganization.yourapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -708,7 +704,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.allcapssoftware.FirebaseLoginSignup;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yourorganization.yourapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
